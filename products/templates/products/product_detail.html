@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ product.name }}</title>
+</head>
+<body>
+    <h1>{{ product.name }}</h1>
+    <p>{{ product.description }}</p>
+    <p>Price: {{ product.price }}</p>
+    <p>Stock Quantity: {{ product.stock_quantity }}</p>
+    <p><a href="{% url 'products:category_detail' product.category.slug %}">Category: {{ product.category.name }}</a></p>
+    <p><a href="{% url 'products:brand_detail' product.brand.slug %}">Brand: {{ product.brand.name }}</a></p>
+    {% for image in product.images.all %}
+        <img src="{{ image.image.url }}" alt="{{ image.product.name }}" />
+    {% endfor %}
+</body>
+</html>
