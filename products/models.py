@@ -29,6 +29,12 @@ class Product(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         return super().save(*args, **kwargs)
+    
+    def Quantity(self):
+        if self.stock_quantity == 0:
+            return "Out of stock"
+        else:
+            return "In stock"
 
     def __str__(self):
         return self.name
